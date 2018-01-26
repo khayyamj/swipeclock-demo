@@ -23,7 +23,7 @@ const videoListItems = (list, onVideoSelect) => {
 
 const VideoList = (props) => {
 	return (
-	<ul>
+	<ul className='list-container'>
 		{videoListItems(props.videos, props.onVideoSelect)}
 	</ul>
 	)
