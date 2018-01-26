@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import { push } from 'react-router-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -42,50 +42,58 @@ const routes = [
 	}
 ];
 
-const App = (props) => (
-	<Router>
-		<div className='page-container'>
-			<div className='app-nav-menu'>
-				<ul className='app-nav-link-container'>
-					<Link className='link' to="/"><li><i class="material-icons">home</i>Home</li></Link>
-					<Link className='link' to="/dashboard"><li><i class="material-icons">apps</i>Dashboard</li></Link>
-					<Link className='link' to="/timecard"><li><i class="material-icons">timelapse</i>Timecard</li></Link>
-					<Link className='link' to="/webclock"><li><i class="material-icons">schedule</i>Webclock</li></Link>
-					<Link className='link' to="/schedule"><li><i class="material-icons">event</i>Schedule</li></Link>
-				</ul>
 
-				
-			</div>
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {displayFullMenu: false};
+		// this.openMenu = this.openMenu.bind(this);
+	}
 
-			<div className='body-container'>
-
-				<div className='header-container'>
-					{routes.map((route, index) => (
-						<Route
-							key={index}
-							path={route.path}
-							exact={route.exact}
-							component={route.header}
-						/>
-					))}
-				</div> 
-
-				<div className='content-container'>
-					{routes.map((route, index) => (
-						<Route
-							key={index}
-							path={route.path}
-							exact={route.exact}
-							component={route.main}
-						/>
-					))}
+	render() {
+		return (
+			<Router>
+				<div className='page-container'>
+					<div onClick={() => this.setState((prevState) => ({ displayFullMenu: !prevState.displayFullMenu }))}><i className={this.state.displayFullMenu ? "no-hamburger": "material-icons hamburger-menu"}>dehaze</i></div>
+					<div className={this.state.displayFullMenu ?  "app-nav-menu full-menu" : "app-nav-menu"}>
+						<ul className='app-nav-link-container' onClick={() => this.setState((prevState) => ({ displayFullMenu: !prevState.displayFullMenu }))}>
+							<Link className='link' to="/"><li><i class="material-icons">home</i>Home</li></Link>
+							<Link className='link' to="/dashboard"><li><i class="material-icons">apps</i>Dashboard</li></Link>
+							<Link className='link' to="/timecard"><li><i class="material-icons">timelapse</i>Timecard</li></Link>
+							<Link className='link' to="/webclock"><li><i class="material-icons">schedule</i>Webclock</li></Link>
+							<Link className='link' to="/schedule"><li><i class="material-icons">event</i>Schedule</li></Link>
+						</ul>
+					</div>
+		
+					<div className='body-container'>		
+						<div className='header-container'>
+							{routes.map((route, index) => (
+								<Route
+									key={index}
+									path={route.path}
+									exact={route.exact}
+									component={route.header}
+								/>
+							))}
+						</div> 
+		
+						<div className='content-container'>
+							{routes.map((route, index) => (
+								<Route
+									key={index}
+									path={route.path}
+									exact={route.exact}
+									component={route.main}
+								/>
+							))}
+						</div>
+					</div>
+		
 				</div>
-
-			</div>
-
-		</div>
-	</Router>
-);
+			</Router>
+		)
+	}
+};
 
 const mapStateToProps = (state) => ({
 	count: state.counter.count,

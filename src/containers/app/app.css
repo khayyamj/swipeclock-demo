@@ -4,6 +4,14 @@
 	display: flex;
 }
 
+.hamburger-menu {
+	background-color: transparent;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	cursor: pointer;
+}
+
 .app-nav-menu {
 	background-color: #262F41;
 	width: 300px;
@@ -68,8 +76,48 @@
 	color: black;
 }
 
-@media screen and (min-width: 1000px) {
-	.app-nav-container {
+.no-hamburger {
+	display: none;
+}
+
+
+
+@media screen and (min-width: 1008px) {
+	.app-nav-menu {
+		display: block;
+	}
+	.hamburger-menu {
 		display: none;
+	}
+}
+
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+	.app-nav-menu {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.full-menu {
+		display: block;
+	}
+	.hamburger-menu {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.app-nav-menu {
+		display: none;
+		position: absolute;
+		width: 100%;
+		z-index: 1;
+	}
+	.full-menu {
+		display: flex;
+		justify-content: center;
+	}
+	.hamburger-menu {
+		display: block;
 	}
 }
