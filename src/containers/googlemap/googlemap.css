@@ -1,0 +1,25 @@
+.googlemap-container {
+	font-size: 72px;
+	font-weight: 900;
+	color: black;
+}
+
+.map {
+	height: 300px;
+	width: 300px;
+	margin: auto;
+}
+
+@media screen and (max-width: 1007px) {
+	.googlemap-container {
+		font-size: 36px;
+		padding: 25px;
+		text-align: center;
+		margin: auto;
+	}
+	
+	.map {
+		font-size: 36px;
+		margin-bottom: 30px;
+	}
+}
