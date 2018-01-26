@@ -97,6 +97,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: 1;
 	}
 	.full-menu {
 		display: block;
@@ -119,5 +120,8 @@
 	}
 	.hamburger-menu {
 		display: block;
+	}
+	.page-container {
+		min-width: 550px;
 	}
 }

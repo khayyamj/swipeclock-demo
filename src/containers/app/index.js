@@ -59,8 +59,8 @@ class App extends Component {
 							<Link className='link' to="/"><li><i className="material-icons">home</i>Home</li></Link>
 							<Link className='link' to="/dashboard"><li><i className="material-icons">apps</i>Dashboard</li></Link>
 							<Link className='link' to="/timecard"><li><i className="material-icons">timelapse</i>Timecard</li></Link>
-							<Link className='link' to="/googlemap"><li><i className="material-icons">schedule</i>Google Map</li></Link>
-							<Link className='link' to="/youtube"><li><i className="material-icons">event</i>YouTube</li></Link>
+							<Link className='link' to="/googlemap"><li><i className="material-icons">pin_drop</i>Google Map</li></Link>
+							<Link className='link' to="/youtube"><li><i className="material-icons">ondemand_video</i>YouTube</li></Link>
 						</ul>
 					</div>
 		
