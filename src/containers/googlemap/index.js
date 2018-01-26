@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
-import './webclock.css';
+import './googlemap.css';
 
 let google = window.google;
-let map, infoWindow;
 
-class Webclock extends Component {
-	constructor(props) {
-		super(props);
-	}
-
+class GoogleMap extends Component {
 	componentDidMount() {
-		window.initMap = this.initMap();
+		setTimeout(window.initMap = this.initMap(), 50);
 	}
 
 	initMap = () => {
-		this.map = new google.maps.Map(this.refs.map, {
+		const map = new google.maps.Map(this.refs.map, {
 			center: { lat: -34.397, lng: 150.644 },
 			zoom: 6
 		});
-		this.infoWindow = new google.maps.InfoWindow;
+		const infoWindow = new google.maps.InfoWindow();
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition((position) => {
 				const pos = {
@@ -26,16 +21,16 @@ class Webclock extends Component {
 					lng: position.coords.longitude
 				};
 
-				this.infoWindow.setPosition(pos);
-				this.infoWindow.setContent('Location Found!');
-				this.infoWindow.open(this.map);;
-				this.map.setCenter(pos);
+				infoWindow.setPosition(pos);
+				infoWindow.setContent('Location Found!');
+				infoWindow.open(map);;
+				map.setCenter(pos);
 			}, () => {
-				this.handleLocationError(true, this.infoWindow, this.map.getCenter())
+				this.handleLocationError(true, infoWindow, map.getCenter())
 			});
 		} else {
 			// Geolocation not supported
-			this.handleLocationError(false, this.infoWindow, this.map.getCenter());
+			this.handleLocationError(false, infoWindow, map.getCenter());
 		}
 	}
 
@@ -47,8 +42,8 @@ class Webclock extends Component {
 
 	render() {
 		return (
-			<div className='webclock-container'>
-				<div>WebClock</div>
+			<div className='googlemap-container'>
+				<div>Google Maps</div>
 
 				<div ref='map' className='map'></div>
 
@@ -57,4 +52,4 @@ class Webclock extends Component {
 	}
 };
 
-export default Webclock;
+export default GoogleMap;

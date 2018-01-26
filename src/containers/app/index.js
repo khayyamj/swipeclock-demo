@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import { increment, incrementAsync, decrement, decrementAsync } from '../../modules/counter';
 import Dashboard from '../dashboard';
 import Timecard from '../timecard';
-import Webclock from '../webclock';
-import Schedule from '../schedule';
+import GoogleMap from '../googlemap';
+import YouTube from '../youtube';
 import Home from '../home';
 
 import './app.css';
@@ -31,14 +31,14 @@ const routes = [
 		main: () => <Timecard />
 	},
 	{
-		path: '/webclock',
-		header: () => <div>WebClock</div>,
-		main: () =><Webclock />
+		path: '/googlemap',
+		header: () => <div>Google Map</div>,
+		main: () => <GoogleMap />
 	},
 	{
-		path: '/schedule',
-		header: () => <div>Schedule</div>,
-		main: () => <Schedule />
+		path: '/youtube',
+		header: () => <div>YouTube</div>,
+		main: () => <YouTube />
 	}
 ];
 
@@ -47,7 +47,6 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {displayFullMenu: false};
-		// this.openMenu = this.openMenu.bind(this);
 	}
 
 	render() {
@@ -57,11 +56,11 @@ class App extends Component {
 					<div onClick={() => this.setState((prevState) => ({ displayFullMenu: !prevState.displayFullMenu }))}><i className={this.state.displayFullMenu ? "no-hamburger": "material-icons hamburger-menu"}>dehaze</i></div>
 					<div className={this.state.displayFullMenu ?  "app-nav-menu full-menu" : "app-nav-menu"}>
 						<ul className='app-nav-link-container' onClick={() => this.setState((prevState) => ({ displayFullMenu: !prevState.displayFullMenu }))}>
-							<Link className='link' to="/"><li><i class="material-icons">home</i>Home</li></Link>
-							<Link className='link' to="/dashboard"><li><i class="material-icons">apps</i>Dashboard</li></Link>
-							<Link className='link' to="/timecard"><li><i class="material-icons">timelapse</i>Timecard</li></Link>
-							<Link className='link' to="/webclock"><li><i class="material-icons">schedule</i>Webclock</li></Link>
-							<Link className='link' to="/schedule"><li><i class="material-icons">event</i>Schedule</li></Link>
+							<Link className='link' to="/"><li><i className="material-icons">home</i>Home</li></Link>
+							<Link className='link' to="/dashboard"><li><i className="material-icons">apps</i>Dashboard</li></Link>
+							<Link className='link' to="/timecard"><li><i className="material-icons">timelapse</i>Timecard</li></Link>
+							<Link className='link' to="/googlemap"><li><i className="material-icons">schedule</i>Google Map</li></Link>
+							<Link className='link' to="/youtube"><li><i className="material-icons">event</i>YouTube</li></Link>
 						</ul>
 					</div>
 		

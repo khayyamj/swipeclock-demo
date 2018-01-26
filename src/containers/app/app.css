@@ -14,7 +14,7 @@
 
 .app-nav-menu {
 	background-color: #262F41;
-	width: 300px;
+	min-width: 300px;
 	color: #9297A3;
 	font-size: 24px;
 }
